@@ -11,5 +11,8 @@ def images(request):
     image.save()
     detector = Detector(file_path=image.photo.path)
     answers = detector.run()
+    image.delete()
+    stored_folder = answers['0']['label'].replace(" ", "_")
+    Photo(photo=file, folder=stored_folder).save()
     return JsonResponse(answers)
 
