@@ -1,5 +1,6 @@
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
+from django.http import UnreadablePostError
 from .detection import Detector
 from .models import Photo
 
@@ -16,3 +17,7 @@ def images(request):
     Photo(photo=file, folder=stored_folder).save()
     return JsonResponse(answers)
 
+def validate_file_extension(value):
+    if value.file.content_type != 'image/jpag':
+        return False
+    return True
