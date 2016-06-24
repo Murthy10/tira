@@ -8,7 +8,7 @@ class Detector:
         self.file_path = file_path
         pwd = os.path.dirname(os.path.realpath(__file__))
         self.modelFullPath = pwd + '/graph/output_graph.pb'
-        self.labelsFullPath = pwd +  '/graph/output_labels.txt'
+        self.labelsFullPath = pwd + '/graph/output_labels.txt'
 
     def run(self):
         self._load_graph()
@@ -24,18 +24,16 @@ class Detector:
         image_data = tf.gfile.FastGFile(self.file_path, 'rb').read()
         with tf.Session() as sess:
             softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
-            predictions = sess.run(softmax_tensor,
-                                   {'DecodeJpeg/contents:0':image_data})
+            predictions = sess.run(softmax_tensor,{'DecodeJpeg/contents:0':image_data})
             predictions = np.squeeze(predictions)
             top_k = predictions.argsort()[-5:][::-1]  # Getting top 5 predictions
-        top_k = predictions.argsort()[-5:][::-1]  # Getting top 5 predictions
-        f = open(self.labelsFullPath, 'rb')
-        lines = f.readlines()
-        labels = [w.decode("utf-8").replace("\n", "") for w in lines]
-        answers = dict()
-        i = 0
-        for node_id in top_k:
-            answer = dict(label=labels[node_id], score=str(predictions[node_id]))
-            answers[str(i)] = answer
-            i= i + 1
-        return answers
+            f = open(self.labelsFullPath, 'rb')
+            lines = f.readlines()
+            labels = [w.decode("utf-8").replace("\n", "") for w in lines]
+            answers = dict()
+            i = 0
+            for node_id in top_k:
+                answer = dict(label=labels[node_id], score=str(predictions[node_id]))
+                answers[str(i)] = answer
+                i= i + 1
+            return answers

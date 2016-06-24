@@ -10,8 +10,8 @@ class Photo(models.Model):
     folder = models.TextField()
     photo = models.ImageField(upload_to=image_path)
 
+
     def delete(self,*args,**kwargs):
-        print(self.photo.path)
         if os.path.isfile(self.photo.path):
             os.remove(self.photo.path)
         super(Photo, self).delete(*args,**kwargs)
