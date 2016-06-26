@@ -33,7 +33,7 @@ docker pull murthy10/tira
 And finally run the container:
 
 ```
-docker run -d -p 8000:8000 tira:latest
+docker run -d -p 8000:8000 murthy10/tira:latest
 ```
 
 To check if everything went okey navigate to http://localhost:8000
