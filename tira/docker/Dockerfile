@@ -4,6 +4,7 @@ MAINTAINER Samuel Kurath <skurath@hsr.ch>
 
 EXPOSE 8000
 
+
 RUN apt-get update \
 && apt-get install -y nginx python-pip python-dev git vim \
 && export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0-cp34-cp34m-linux_x86_64.whl \
@@ -16,4 +17,4 @@ RUN apt-get update \
 && cd /tira/ \
 && echo 'yes' | python manage.py collectstatic
 
-
+ADD rc.local /etc/rc.local
