@@ -14,6 +14,6 @@ RUN apt-get update \
 && git clone https://github.com/Murthy10/tira.git \
 && ln -s /tira/tira/docker/tira_nginx.conf /etc/nginx/sites-enabled/ \
 && cd /tira/ \
-&& echo 'yes' | python manage.py collectstatic
-
+&& echo 'yes' | python manage.py collectstatic \
+&& chmod +x /tira/tira/docker/start.sh
 CMD ["/tira/tira/docker/start.sh"]
