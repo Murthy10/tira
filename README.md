@@ -22,3 +22,18 @@ Response:
 ```
 b'{"4": {"score": "0.0331435", "label": "snapdragon"}, "2": {"score": "0.139561", "label": "sweet william"}, "0": {"score": "0.507734", "label": "garden phlox"}
 ```
+
+## Usage
+The easiest way to use tira is to pull the dockercontainer from dockerhub.
+
+```
+docker pull murthy10/tira
+```
+
+And finally run the container:
+
+```
+docker run -d -p 8000:8000 tira:latest
+```
+
+To check if everything went okey navigate to http://localhost:8000
