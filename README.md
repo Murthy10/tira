@@ -1,11 +1,22 @@
 # tira
-tensorflow image recognition api
+An easy to use tensorflow image recognition api (still in development)
 
-this repo is in a very eary stage 
-
-## main goal
-Provide an api which is callable with a http multipart request with an image and responses with the five most likely objects on it as a JSON.
-
-## how it works
-
+## How it works
 ![Overview](/tira.png)
+
+1. Send a http multipart request with an image to tira
+2. Get a JSON response with the classified objects of image
+
+### Example
+Send an image with to tira:
+```python
+url = '/recognition/images'
+data = {'image': open('/images/blume.jpg', 'rb')}
+response = self.client.post(url, data, format='multipart')
+print(response.content)
+```
+
+Output:
+```
+b'{"4": {"score": "0.0331435", "label": "snapdragon"}, "2": {"score": "0.139561", "label": "sweet william"}, "0": {"score": "0.507734", "label": "garden phlox"}
+```
