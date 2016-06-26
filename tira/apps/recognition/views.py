@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from .detection import Detector
@@ -7,6 +8,7 @@ from .http_responses import HttpResponseUnsupportedMediaType, HttpResponseNotAcc
 CLASSIFICATION_THRESHOLD = 0.2
 
 
+@csrf_exempt
 @require_http_methods('POST')
 def images(request):
     if 'image' not in request.FILES:
