@@ -12,7 +12,7 @@ To improve further learning tira stores the images in folders based on the best 
 ### Example
 Send an image with to tira.
 ```
-curl -i -F image=@blume.jpg http://172.17.0.2:8000/recognition/images
+curl -i -F image=@blume.jpg http://localhost:8000/recognition/images
 ```
 
 Response:
