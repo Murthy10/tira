@@ -5,7 +5,7 @@ An easy to use tensorflow image recognition api (still in development)
 ![Overview](/tira.png)
 
 1. Send a http multipart request with an image to tira
-2. Get a JSON response with the classified objects of image
+2. Get a JSON response with the classified objects of the image
 
 To improve further learning tira stores the images in folders based on the best classified result.
 
@@ -42,3 +42,9 @@ docker run -d -p 8000:8000 murthy10/tira:latest
 ```
 
 To check if everything went okey navigate to http://localhost:8000
+
+### Copy stored images
+For further training of the neural network you can copy the images from tira to your local machine.
+```
+docker cp <containerId>:/tira/tira/media /host/path/target
+```
