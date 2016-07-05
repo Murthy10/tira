@@ -10,10 +10,14 @@ RUN apt-get update \
 && pip install --upgrade pip \
 && pip3 install --upgrade $TF_BINARY_URL \
 && pip install uwsgi \
+&& pip install pillow \
 && cd / \
 && git clone https://github.com/Murthy10/tira.git \
 && ln -s /tira/tira/docker/tira_nginx.conf /etc/nginx/sites-enabled/ \
 && cd /tira/ \
 && echo 'yes' | python manage.py collectstatic \
+&& rm db.sqlite3 \
+&& python manage.py makemigrations recognition \
+&& python manage.py migrate \
 && chmod +x /tira/tira/docker/start.sh
 CMD ["/tira/tira/docker/start.sh"]

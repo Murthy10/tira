@@ -10,12 +10,17 @@ An easy to use tensorflow image recognition api (still in development)
 To improve further learning tira stores the images in folders based on the best classified result.
 
 ### Example
-Send an image with to tira:
+Send an image with to tira.
+Python:
 ```python
 url = '/recognition/images'
 data = {'image': open('/images/blume.jpg', 'rb')}
 response = self.client.post(url, data, format='multipart')
 print(response.content)
+```
+curl:
+```
+curl -i -F image=@blume.jpg http://172.17.0.2:8000/recognition/images
 ```
 
 Response:
