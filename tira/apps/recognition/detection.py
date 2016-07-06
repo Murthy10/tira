@@ -7,8 +7,8 @@ class Detector:
     def __init__(self, file_path):
         self.file_path = file_path
         pwd = os.path.dirname(os.path.realpath(__file__))
-        self.modelFullPath = pwd + '/graph/output_graph.pb'
-        self.labelsFullPath = pwd + '/graph/output_labels.txt'
+        self.modelFullPath = pwd + '/graph/graph.pb'
+        self.labelsFullPath = pwd + '/graph/labels.txt'
 
     def run(self):
         self._load_graph()

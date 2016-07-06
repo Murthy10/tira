@@ -17,8 +17,12 @@ curl -i -F image=@blume.jpg http://localhost:8000/recognition/images
 
 Response:
 ```
-b'{"4": {"score": "0.0331435", "label": "snapdragon"}, "2": {"score": "0.139561", "label": "sweet william"}, "0": {"score": "0.507734", "label": "garden phlox"}
+{"4": {"score": "0.0331435", "label": "snapdragon"}, "2": {"score": "0.139561", "label": "sweet william"}, "0": {"score": "0.507734", "label": "garden phlox"}
 ```
+
+### Use your own trained model
+Tira works with a trained tensorflow model and simply uses the graph and labels files.
+So if you'd like to use your own trained model just overwrite the graph.pb and the labels.txt flies in the /tira/tira/apps/recognition/graph/ directory.
 
 ## Usage
 The easiest way to use tira is to pull the dockercontainer from dockerhub.
